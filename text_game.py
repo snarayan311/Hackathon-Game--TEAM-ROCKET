@@ -2,6 +2,16 @@
 import random
 
 def play_game():
+
+	def other(who):
+		return 1- who
+
+	def player(who):
+		if who == 0:
+			current_player, opponent_player = player1, player2
+		else: #if who == 1
+			current_player, opponent_player = player2, player1
+
 	done = False
 	#initialize players
 	print ("WELCOME TO BERKELEY POKEMON BATTLE!")
@@ -120,7 +130,8 @@ def play_game():
 
 
 
-	who = 0 # assign current vs opponent player
+	
+	who, current_player, opponent_player = 0, player1, player2
 	while not done:
 		player(who)
 		take_turn(current_player, opponent_player)
@@ -133,17 +144,9 @@ def play_game():
 
 	
 	
-def other(who):
-	return 1- who
-
-def player(who):
-	if who == 0:
-			current_player, opponent_player = player1, player2
-	else: #if who == 1
-		current_player, opponent_player = player2, player1
 
 def take_turn(player, opponent):
-	player.attack(player, opponent)
+	player.attack(player, opponent, player.damage)
 	
 		
 
@@ -175,13 +178,14 @@ class Instructor(Player):
 	
 	def __init__(self, name):
 		Player.__init__(self, name)
+		self.turn_damage = 0
 
 	def attack(self, opponent):
-		turn_damage = random_choice(self.damage)
-		Player.attack(self, opponent, turn_damage)
-		if turn_damage in range(90, 100):
+		self.turn_damage = random.choice(self.damage)
+		Player.attack(self, opponent, self.turn_damage)
+		if self.turn_damage in range(90, 100):
 			print("SURPRISE EXAM! SUPER EFFECTIVE!!!")
-		elif turn_damage in range(60,70):
+		elif self.turn_damage in range(60,70):
 			print("Nobody shows up for lecture. Not so effective.")
 		else:
 			print("INSTRUCTOR ATTACK!")
@@ -194,7 +198,7 @@ class TA(Player):
 		Player.__init__(self, name)
 
 	def attack(self, opponent):
-		Player.attack(self, opponent, damage)
+		Player.attack(self, opponent, Player.damage)
 		print("GUERILLA ATTACK!")
 
 		
@@ -203,13 +207,14 @@ class Reader(Player):
 
 	def __init__(self, name):
 		Player.__init__(self, name)
+		self.damage = 0
 
 	def attack(self, opponent):
-		turn_damage = random_choice(self.damage)
-		Player.attack(self, opponent, turn_damage)
-		if turn_damage in range(50,60):
+		self.turn_damage = random.choice(self.damage)
+		Player.attack(self, opponent, self.turn_damage)
+		if self.turn_damage in range(50,60):
 			print("Oh no! This midterm is really long!")
-		elif turn_damage in range(80,90):
+		elif self.turn_damage in range(80,90):
 			print("SUPER READER READS ALL THE EXAMS!")
 		else:
 			print('Reader attack!')
