@@ -49,7 +49,7 @@ def play_game():
 		else:
 			player1 = TA("Dickson")
 	else:
-		player1_name == str(input("Choose your reader: Justin, Kevin, Richard, Cem, Jocelyn, George, Anna, Michelle,\
+		player1_name = str(input("Choose your reader: Justin, Kevin, Richard, Cem, Jocelyn, George, Anna, Michelle,\
 		Daniel. "))
 		if player1_name == "Justin":
 			player1 = Reader("Justin")
@@ -134,6 +134,7 @@ def play_game():
 	who, current_player, opponent_player = 0, player1, player2
 	while not done:
 		player(who)
+		input("Press enter to continue: ")
 		take_turn(current_player, opponent_player)
 		
 		if player1.life <= 0 or player2.life <= 0:
@@ -148,9 +149,6 @@ def play_game():
 def take_turn(player, opponent):
 	player.attack(opponent, player.damage)
 	
-		
-
-play_game()
 
 ######################
 
