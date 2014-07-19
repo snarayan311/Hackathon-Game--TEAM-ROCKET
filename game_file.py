@@ -1,5 +1,5 @@
 
-import pygame
+import pygame, random
 pygame.init()
 
 import random
@@ -160,11 +160,27 @@ while not done:
 
 
 
+# class Cursor:
+
+# 	def __init__(self, color, x_coord, y_coord):
+# 		self.color = color
+# 		self.x_coord = x_coord
+# 		self.y_coord = y_coord
+
+# 	def move(self, ):
+
+
+
+
+
+
 class Player:
 	life = 500
 	damage = 75
-	def __init__(self, name):
+	def __init__(self, name, x_coord, y_coord):
 		self.name = name
+		self.x_coord = x_coord
+		self.y_coord = y_coord
 
 	def reduce_health(self, hit_points):
 		if self.life <= hit_points:
@@ -172,17 +188,34 @@ class Player:
 		else:
 			self.life -= hit_points
 
-	def attack(self, opponent):
-		opponent.reduce_health(self.damage)
+	def attack(self, opponent, damage):
+		print (self.name, " has attacked ", opponent, " with ", damage, " damage !")
+		opponent.reduce_health(damage)
+		print(opponent.name, " has ", opponent.life, " life.")
+		
+
+	
+
 
 class Instructor(Player):
 	life = 1000
-	damage = 100 
+	damage = range(60,100)
 	
 	def __init__(self, name):
 		Player.__init__(self, name)
 
-	
+	def attack(self, opponent):
+		turn_damage = random_choice(self.damage)
+		Player.attack(self, opponent, turn_damage)
+		if turn_damage in range(90, 100):
+			print("SURPRISE EXAM! SUPER EFFECTIVE!!!")
+		elif turn_damage in range(60,70):
+			print("Nobody shows up for lecture. Not so effective.")
+		else:
+			print("INSTRUCTOR ATTACK!")
+		
+		
+
 
 class TA(Player):
 	life = 750
@@ -190,11 +223,25 @@ class TA(Player):
 	def __init__(self, name):
 		Player.__init__(self, name)
 
+	def attack(self, opponent):
+		Player.attack(self, opponent, damage)
+		print("GUERILLA ATTACK!")
+		
 class Reader(Player):
-	damage = 50
+	damage = range(50,90)
 
 	def __init__(self, name):
 		Player.__init__(self, name)
+
+	def attack(self, opponent):
+		turn_damage = random_choice(self.damage)
+		Player.attack(self, opponent, turn_damage)
+		if turn_damage in range(50,60):
+			print("Oh no! This midterm is really long!")
+		elif turn_damage in range(80,90):
+			print("SUPER READER READS ALL THE EXAMS!")
+		else:
+			print('Reader attack!')
 
 
 
