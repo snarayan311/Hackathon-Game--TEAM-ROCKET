@@ -8,10 +8,10 @@ def play_game():
 	player1_class = str(input("Player 1, choose your Pokemon: Instructor, Teaching Assistant, or Reader?"))
 	if player1_class == "Instructor:"
 		player1_name = str(input("Choose your instructor: Rohin or Andrew"))
-		if player1_name == 'Rohin':
-			#create Rohin object
+		if player1_name == "Rohin":
+			player1 = Instructor("Rohin")
 		else:
-			#create Andrew object
+			player1 = Instructor("Andrew")
 
 
 	while not done:
