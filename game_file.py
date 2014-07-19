@@ -42,6 +42,20 @@ while not done:
 
 	pygame.display.flip()
 
+class Cursor:
+
+	def __init__(self, color, x_coord, y_coord):
+		self.color = color
+		self.x_coord = x_coord
+		self.y_coord = y_coord
+
+	
+
+
+
+
+
+
 class Player:
 	life = 500
 	damage = 75
@@ -64,7 +78,7 @@ class Instructor(Player):
 	def __init__(self, name):
 		Player.__init__(self, name)
 
-	
+
 
 class TA(Player):
 	life = 750
