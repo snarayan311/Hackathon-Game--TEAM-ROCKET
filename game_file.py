@@ -48,6 +48,15 @@ class Player:
 	def __init__(self, name):
 		self.name = name
 
+	def reduce_health(self, hit_points):
+		if self.life <= hit_points:
+			print ("You're dead!!!")
+		else:
+			self.life -= hit_points
+
+	def attack(self, opponent):
+		opponent.reduce_health(self.damage)
+
 class Instructor(Player):
 	life = 1000
 	damage = 100 
@@ -55,8 +64,7 @@ class Instructor(Player):
 	def __init__(self, name):
 		Player.__init__(self, name)
 
-	def instructor_attack():
-		return none
+	
 
 class TA(Player):
 	life = 750
@@ -64,17 +72,12 @@ class TA(Player):
 	def __init__(self, name):
 		Player.__init__(self, name)
 
-	def ta_attack():
-		return none
-
 class Reader(Player):
 	damage = 50
 
 	def __init__(self, name):
 		Player.__init__(self, name)
 
-	def reader_attack():
-		return none
 
 
 pygame.quit()
