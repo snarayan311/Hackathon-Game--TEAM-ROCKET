@@ -48,7 +48,7 @@ class Player:
 	def __init__(self, name):
 		self.name = name
 
-class Instructor(Player)
+class Instructor(Player):
 	life = 1000
 	damage = 100 
 	
@@ -56,22 +56,25 @@ class Instructor(Player)
 		Player.__init__(self, name)
 
 	def instructor_attack():
+		return none
 
-class TA(Player)
+class TA(Player):
 	life = 750
 
 	def __init__(self, name):
 		Player.__init__(self, name)
 
 	def ta_attack():
+		return none
 
-class Reader(Player)
+class Reader(Player):
 	damage = 50
 
 	def __init__(self, name):
 		Player.__init__(self, name)
 
 	def reader_attack():
+		return none
 
 
 pygame.quit()
