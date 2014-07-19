@@ -1,3 +1,4 @@
+import random
 def other(who):
 	return 1- who
 
@@ -60,16 +61,19 @@ def play_game():
 		else:
 			player1 = Reader("Daniel")
 
-	player2_class = str(input("Player 1, choose your Pokemon: Instructor, Teaching Assistant, or Reader?"))
+	x = ["Instructor" , "Teaching Assistant", "Reader"]
+	player2_class = random.choice(x)
 	if player2_class == "Instructor":
-		player2_name = str(input("Choose your instructor: Rohin or Andrew"))
+		y = ["Andrew", "Rohin"]
+		player2_name = random.choice(y)
 		if player2_name == "Rohin":
 			player2 = Instructor("Rohin")
 		else:
 			player2 = Instructor("Andrew")
 	elif player2_class == "Teaching Assistants":
-		player2_name = str(input("Player 1, choose your teaching assistant: Jonathan, Matthew, Ajeya, Davis, Jessica, Angela, Jeffrey, \
-		Beth, Youri, Alana, Dickson?"))
+		z = ["Jonathan", "Matthew", "Ajeya", "Davis", "Jessica", "Angela", "Jeffrey", \
+		"Beth", "Youri", "Alana", "Dickson"]
+		player2_name = random.choice(z)
 		if player2_name == "Jonathan":
 			player2 = TA("Jonathan")
 		elif player2_name == "Matthew":
@@ -93,8 +97,9 @@ def play_game():
 		else:
 			player2 = TA("Dickson")
 	else:
-		player2_name == str(input("Choose your reader: Justin, Kevin, Richard, Cem, Jocelyn, George, Anna, Michelle,\
-		Daniel")
+		a = ["Justin", "Kevin", "Richard", "Cem", "Jocelyn", "George", "Anna", "Michelle",\
+		"Daniel"]
+		player2_name == random.choice(a)
 		if player2_name == "Justin":
 			player2 = Reader("Justin")
 		elif player2_name == "Kevin":
