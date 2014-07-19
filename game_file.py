@@ -90,9 +90,9 @@ class Player:
 		else:
 			self.life -= hit_points
 
-	def attack(self, opponent):
-		print (self.name, " has attacked ", opponent, " with ", self.damage, " damage !")
-		opponent.reduce_health(self.damage)
+	def attack(self, opponent, damage):
+		print (self.name, " has attacked ", opponent, " with ", damage, " damage !")
+		opponent.reduce_health(damage)
 		print(opponent.name, " has ", opponent.life, " life.")
 		
 
@@ -101,17 +101,18 @@ class Player:
 
 class Instructor(Player):
 	life = 1000
-	damage = random.choice(range(60-100))
+	damage = range(60,100)
 	
 	def __init__(self, name):
 		Player.__init__(self, name)
 
-	def instructor_attack(self, opponent):
-		Player.attack(self, opponent)
-		if self.damage == 100:
+	def attack(self, opponent):
+		turn_damage = random_choice(self.damage)
+		Player.attack(self, opponent, turn_damage)
+		if turn_damage in range(90, 100):
 			print("SURPRISE EXAM! SUPER EFFECTIVE!!!")
-		elif self.damage == 60:
-			print("Nobody shows up for lecture. Not so effective. :(")
+		elif turn_damage in range(60,70):
+			print("Nobody shows up for lecture. Not so effective.")
 		else:
 			print("INSTRUCTOR ATTACK!")
 		
@@ -124,18 +125,26 @@ class TA(Player):
 	def __init__(self, name):
 		Player.__init__(self, name)
 
-	def ta_attack(self, opponent):
-		Player.attack(self, opponent)
+	def attack(self, opponent):
+		Player.attack(self, opponent, damage)
 		print("GUERILLA ATTACK!")
 		
 class Reader(Player):
-	damage = random.choice(range(50-90))
+	damage = range(50,90)
 
 	def __init__(self, name):
 		Player.__init__(self, name)
 
-	def reader_attack(self, opponent):
-		Player.attack(self, opponent)
+	def attack(self, opponent):
+		turn_damage = random_choice(self.damage)
+		Player.attack(self, opponent, turn_damage)
+		if turn_damage in range(50,60):
+			print("Oh no! This midterm is really long!")
+		elif turn_damage in range(80,90):
+			print("SUPER READER READS ALL THE EXAMS!")
+		else:
+			print('Reader attack!')
+
 
 
 pygame.quit()

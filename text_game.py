@@ -6,16 +6,16 @@ def play_game():
 	#initialize players
 	print ("WELCOME TO BERKELEY POKEMON BATTLE!")
 
-	player1_class = str(input("Choose your Pokemon: Instructor, Teaching Assistant, or Reader?"))
+	player1_class = str(input("Choose your Pokemon: Instructor, Teaching Assistant, or Reader? "))
 	if player1_class == "Instructor":
-		player1_name = str(input("Choose your instructor: Rohin or Andrew"))
+		player1_name = str(input("Choose your instructor: Rohin or Andrew. "))
 		if player1_name == "Rohin":
 			player1 = Instructor("Rohin")
 		else:
 			player1 = Instructor("Andrew")
 	elif player1_class == "Teaching Assistants":
 		player1_name = str(input("Choose your teaching assistant: Jonathan, Matthew, Ajeya, Davis, Jessica, Angela, Jeffrey, \
-		Beth, Youri, Alana, Dickson?"))
+		Beth, Youri, Alana, Dickson? "))
 		if player1_name == "Jonathan":
 			player1 = TA("Jonathan")
 		elif player1_name == "Matthew":
@@ -40,7 +40,7 @@ def play_game():
 			player1 = TA("Dickson")
 	else:
 		player1_name == str(input("Choose your reader: Justin, Kevin, Richard, Cem, Jocelyn, George, Anna, Michelle,\
-		Daniel")
+		Daniel. "))
 		if player1_name == "Justin":
 			player1 = Reader("Justin")
 		elif player1_name == "Kevin":
@@ -98,7 +98,7 @@ def play_game():
 	else:
 		a = ["Justin", "Kevin", "Richard", "Cem", "Jocelyn", "George", "Anna", "Michelle",\
 		"Daniel"]
-		player2_name == random.choice(a)
+		player2_name = random.choice(a)
 		if player2_name == "Justin":
 			player2 = Reader("Justin")
 		elif player2_name == "Kevin":
@@ -128,6 +128,7 @@ def play_game():
 		if player1.life <= 0 or player2.life <= 0:
 			done = True
 		who = other(who)
+	print("GAME OVER!")
 
 
 	
@@ -146,25 +147,15 @@ def take_turn(player, opponent):
 	
 		
 
-
-		
-		
-
-	
-
-
-
-play_game()
+# play_game()
 
 ######################
 
 class Player:
 	life = 500
 	damage = 75
-	def __init__(self, name, x_coord, y_coord):
+	def __init__(self, name):
 		self.name = name
-		self.x_coord = x_coord
-		self.y_coord = y_coord
 
 	def reduce_health(self, hit_points):
 		if self.life <= hit_points:
@@ -205,7 +196,7 @@ class TA(Player):
 	def attack(self, opponent):
 		Player.attack(self, opponent, damage)
 		print("GUERILLA ATTACK!")
-		
+
 		
 class Reader(Player):
 	damage = range(50,90)
