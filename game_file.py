@@ -62,5 +62,44 @@ while not done:
 
 	pygame.display.flip()
 
+class Player:
+	life = 500
+	damage = 75
+	def __init__(self, name):
+		self.name = name
+
+	def reduce_health(self, hit_points):
+		if self.life <= hit_points:
+			print ("You're dead!!!")
+		else:
+			self.life -= hit_points
+
+	def attack(self, opponent):
+		opponent.reduce_health(self.damage)
+
+class Instructor(Player):
+	life = 1000
+	damage = 100 
+	
+	def __init__(self, name):
+		Player.__init__(self, name)
+
+	
+
+class TA(Player):
+	life = 750
+
+	def __init__(self, name):
+		Player.__init__(self, name)
+
+class Reader(Player):
+	damage = 50
+
+	def __init__(self, name):
+		Player.__init__(self, name)
+
+
+
 pygame.quit()
 	
+
