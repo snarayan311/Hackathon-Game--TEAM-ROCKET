@@ -1,4 +1,5 @@
 
+import random
 
 def play_game():
 	done = False
@@ -41,23 +42,84 @@ def play_game():
 		player1_name == str(input("Choose your reader: Justin, Kevin, Richard, Cem, Jocelyn, George, Anna, Michelle,\
 		Daniel")
 		if player1_name == "Justin":
-			#create Justin
+			player1 = Reader("Justin")
 		elif player1_name == "Kevin":
-			#create Kevin
+			player1 = Reader("Kevin")
 		elif player1_name == "Richard":
-			#create Richard
+			player1 = Reader("Richard")
 		elif player1_name == "Cem":
-			#create Cem
+			player1 = Reader("Cem")
 		elif player1_name == "Jocelyn":
-			#create Jocelyn
+			player1 = Reader("Jocelyn")
 		elif player1_name == "George":
-			# create George
+			player1 = Reader("George")
 		elif player1_name == "Anna":
-			#create Anna
+			player1 = Reader("Anna")
 		elif player1_name == "Michelle":
-			#create Michelle
+			player1 = Reader("Michelle")
 		else:
-			#create Daniel
+			player1 = Reader("Daniel")
+
+	x = ["Instructor" , "Teaching Assistant", "Reader"]
+	player2_class = random.choice(x)
+	if player2_class == "Instructor":
+		y = ["Andrew", "Rohin"]
+		player2_name = random.choice(y)
+		if player2_name == "Rohin":
+			player2 = Instructor("Rohin")
+		else:
+			player2 = Instructor("Andrew")
+	elif player2_class == "Teaching Assistants":
+		z = ["Jonathan", "Matthew", "Ajeya", "Davis", "Jessica", "Angela", "Jeffrey", \
+		"Beth", "Youri", "Alana", "Dickson"]
+		player2_name = random.choice(z)
+		if player2_name == "Jonathan":
+			player2 = TA("Jonathan")
+		elif player2_name == "Matthew":
+			player2 = TA("Matthew")
+		elif player2_name == "Ajeya":
+			player2 = TA("Ajeya")
+		elif player2_name == "Davis":
+			player2 = TA("Davis")
+		elif player2_name == "Jessica":
+			player2 = TA("Jessica")
+		elif player2_name == "Angela":
+			player2 = TA("Angela")
+		elif player2_name == "Jeffrey":
+			player2 = TA("Jeffrey")
+		elif player2_name == "Beth":
+			player2 = TA("Beth")
+		elif player2_name == "Youri":
+			player2 = TA("Youri")
+		elif player2_name == "Alana":
+			player2 = TA("Alana")
+		else:
+			player2 = TA("Dickson")
+	else:
+		a = ["Justin", "Kevin", "Richard", "Cem", "Jocelyn", "George", "Anna", "Michelle",\
+		"Daniel"]
+		player2_name == random.choice(a)
+		if player2_name == "Justin":
+			player2 = Reader("Justin")
+		elif player2_name == "Kevin":
+			player2 = Reader("Kevin")
+		elif player2_name == "Richard":
+			player2 = Reader("Richard")
+		elif player2_name == "Cem":
+			player2 = Reader("Cem")
+		elif player2_name == "Jocelyn":
+			player2 = Reader("Jocelyn")
+		elif player2_name == "George":
+			player2 = Reader("George")
+		elif player2_name == "Anna":
+			player2 = Reader("Anna")
+		elif player2_name == "Michelle":
+			player2 = Reader("Michelle")
+		else:
+			player2 = Reader("Daniel")
+
+
+
 	who = 0 # assign current vs opponent player
 	while not done:
 		player(who)
