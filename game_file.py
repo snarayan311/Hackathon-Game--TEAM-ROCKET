@@ -1,5 +1,5 @@
 
-import pygame
+import pygame, random
 pygame.init()
 
 BLACK = ( 0, 0, 0)
@@ -62,14 +62,14 @@ while not done:
 
 	pygame.display.flip()
 
-class Cursor:
+# class Cursor:
 
-	def __init__(self, color, x_coord, y_coord):
-		self.color = color
-		self.x_coord = x_coord
-		self.y_coord = y_coord
+# 	def __init__(self, color, x_coord, y_coord):
+# 		self.color = color
+# 		self.x_coord = x_coord
+# 		self.y_coord = y_coord
 
-	
+# 	def move(self, ):
 
 
 
@@ -79,8 +79,10 @@ class Cursor:
 class Player:
 	life = 500
 	damage = 75
-	def __init__(self, name):
+	def __init__(self, name, x_coord, y_coord):
 		self.name = name
+		self.x_coord = x_coord
+		self.y_coord = y_coord
 
 	def reduce_health(self, hit_points):
 		if self.life <= hit_points:
@@ -89,15 +91,31 @@ class Player:
 			self.life -= hit_points
 
 	def attack(self, opponent):
+		print (self.name, " has attacked ", opponent, " with ", self.damage, " damage !")
 		opponent.reduce_health(self.damage)
+		print(opponent.name, " has ", opponent.life, " life.")
+		
+
+	
+
 
 class Instructor(Player):
 	life = 1000
-	damage = 100 
+	damage = random.choice(range(60-100))
 	
 	def __init__(self, name):
 		Player.__init__(self, name)
 
+	def instructor_attack(self, opponent):
+		Player.attack(self, opponent)
+		if self.damage == 100:
+			print("SURPRISE EXAM! SUPER EFFECTIVE!!!")
+		elif self.damage == 60:
+			print("Nobody shows up for lecture. Not so effective. :(")
+		else:
+			print("INSTRUCTOR ATTACK!")
+		
+		
 
 
 class TA(Player):
@@ -106,12 +124,18 @@ class TA(Player):
 	def __init__(self, name):
 		Player.__init__(self, name)
 
+	def ta_attack(self, opponent):
+		Player.attack(self, opponent)
+		print("GUERILLA ATTACK!")
+		
 class Reader(Player):
-	damage = 50
+	damage = random.choice(range(50-90))
 
 	def __init__(self, name):
 		Player.__init__(self, name)
 
+	def reader_attack(self, opponent):
+		Player.attack(self, opponent)
 
 
 pygame.quit()
