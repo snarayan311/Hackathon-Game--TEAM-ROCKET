@@ -7,55 +7,55 @@ def play_game():
 	print ("WELCOME TO BERKELEY POKEMON BATTLE!")
 
 	player1_class = str(input("Player 1, choose your Pokemon: Instructor, Teaching Assistant, or Reader?"))
-	if player1_class == "Instructor:"
+	if player1_class == "Instructor":
 		player1_name = str(input("Choose your instructor: Rohin or Andrew"))
 		if player1_name == "Rohin":
 			player1 = Instructor("Rohin")
 		else:
 			player1 = Instructor("Andrew")
 	elif player1_class == "Teaching Assistants":
-		player1_name = str(input("Player 1, choose your Pokemon: Jonathan, Matthew, Ajeya, Davis, Jessica, Angela, Jeffrey, \
-		Beth, Youri, Alana, Dickson?")
-		if player1_name == 'Jonathan':
-			#create Jonathan
-		elif player1_name == Matthew:
-			#create Matthew
-		elif player1_name == Ajeya:
-			#create Ajeya
-		elif player1_name == Davis:
-			#create Davis
-		elif player1_name == Jessica:
-			#create Jessica
-		elif player1_name == Angela:
-			#create Angela
-		elif player1_name == Jeffrey:
-			#create Jeffrey
-		elif player1_name == Beth:
-			#create Beth
-		elif player1_name == Youri:
-			#create Youri
-		elif player1_name == Alana:
-			#create Alana
+		player1_name = str(input("Player 1, choose your teaching assistant: Jonathan, Matthew, Ajeya, Davis, Jessica, Angela, Jeffrey, \
+		Beth, Youri, Alana, Dickson?"))
+		if player1_name == "Jonathan":
+			player1 = TA("Jonathan")
+		elif player1_name == "Matthew":
+			player1 = TA("Matthew")
+		elif player1_name == "Ajeya":
+			player1 = TA("Ajeya")
+		elif player1_name == "Davis":
+			player1 = TA("Davis")
+		elif player1_name == "Jessica":
+			player1 = TA("Jessica")
+		elif player1_name == "Angela":
+			player1 = TA("Angela")
+		elif player1_name == "Jeffrey":
+			player1 = TA("Jeffrey")
+		elif player1_name == "Beth":
+			player1 = TA("Beth")
+		elif player1_name == "Youri":
+			player1 = TA("Youri")
+		elif player1_name == "Alana":
+			player1 = TA("Alana")
 		else:
-			#create Dickson
+			player1 = TA("Dickson")
 	else:
-		player1_name == str(input("Choose your Pokemon: Justin, Kevin, Richard, Cem, Jocelyn, George, Anna, Michelle,\
+		player1_name == str(input("Choose your reader: Justin, Kevin, Richard, Cem, Jocelyn, George, Anna, Michelle,\
 		Daniel")
-		if player1_name == Justin:
+		if player1_name == "Justin":
 			#create Justin
-		elif player1_name == Kevin:
+		elif player1_name == "Kevin":
 			#create Kevin
-		elif player1_name == Richard:
+		elif player1_name == "Richard":
 			#create Richard
-		elif player1_name == Cem:
+		elif player1_name == "Cem":
 			#create Cem
-		elif player1_name == Jocelyn:
+		elif player1_name == "Jocelyn":
 			#create Jocelyn
-		elif player1_name == George:
+		elif player1_name == "George":
 			# create George
-		elif player1_name == Anna:
+		elif player1_name == "Anna":
 			#create Anna
-		elif player1_name == Michelle:
+		elif player1_name == "Michelle":
 			#create Michelle
 		else:
 			#create Daniel
