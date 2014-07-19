@@ -1,12 +1,11 @@
-def other(who):
-	return 1- who
+
 
 def play_game():
 	done = False
 	#initialize players
 	print ("WELCOME TO BERKELEY POKEMON BATTLE!")
 
-	player1_class = str(input("Player 1, choose your Pokemon: Instructor, Teaching Assistant, or Reader?"))
+	player1_class = str(input("Choose your Pokemon: Instructor, Teaching Assistant, or Reader?"))
 	if player1_class == "Instructor":
 		player1_name = str(input("Choose your instructor: Rohin or Andrew"))
 		if player1_name == "Rohin":
@@ -14,7 +13,7 @@ def play_game():
 		else:
 			player1 = Instructor("Andrew")
 	elif player1_class == "Teaching Assistants":
-		player1_name = str(input("Player 1, choose your teaching assistant: Jonathan, Matthew, Ajeya, Davis, Jessica, Angela, Jeffrey, \
+		player1_name = str(input("Choose your teaching assistant: Jonathan, Matthew, Ajeya, Davis, Jessica, Angela, Jeffrey, \
 		Beth, Youri, Alana, Dickson?"))
 		if player1_name == "Jonathan":
 			player1 = TA("Jonathan")
@@ -59,31 +58,39 @@ def play_game():
 			#create Michelle
 		else:
 			#create Daniel
-
-	#repeat for player2
-
-
 	who = 0 # assign current vs opponent player
-
 	while not done:
+		player(who)
 		take_turn(current_player, opponent_player)
-
+		
 		if player1.life <= 0 or player2.life <= 0:
 			done = True
+		who = other(who)
 
-	def take_turn(current_player, opponent_player):
-		#attacks, point drains etc. 
+
+	
+	
+def other(who):
+	return 1- who
+
+def player(who):
+	if who == 0:
+			current_player, opponent_player = player1, player2
+	else: #if who == 1
+		current_player, opponent_player = player2, player1
+
+
+
+def take_turn(current_player, opponent_player):
+	
 		
 
 
-		who = other(who)
+		
 		
 
 	
-		if who == 0:
-			current_player, opponent_player = player1, player2
-		else: #if who == 1
-			current_player, opponent_player = player2, player1
+
 
 
 play_game()
