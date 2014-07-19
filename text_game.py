@@ -146,11 +146,11 @@ def play_game():
 	
 
 def take_turn(player, opponent):
-	player.attack(player, opponent, player.damage)
+	player.attack(opponent, player.damage)
 	
 		
 
-# play_game()
+play_game()
 
 ######################
 
@@ -163,13 +163,16 @@ class Player:
 	def reduce_health(self, hit_points):
 		if self.life <= hit_points:
 			print ("You're dead!!!")
-		else:
-			self.life -= hit_points
+		
+		self.life -= hit_points
 
 	def attack(self, opponent, damage):
 		print (self.name, " has attacked ", opponent, " with ", damage, " damage !")
 		opponent.reduce_health(damage)
 		print(opponent.name, " has ", opponent.life, " life.")
+
+	def __str__(self):
+		return self.name
 		
 
 class Instructor(Player):
@@ -180,7 +183,7 @@ class Instructor(Player):
 		Player.__init__(self, name)
 		self.turn_damage = 0
 
-	def attack(self, opponent):
+	def attack(self, opponent, damage):
 		self.turn_damage = random.choice(self.damage)
 		Player.attack(self, opponent, self.turn_damage)
 		if self.turn_damage in range(90, 100):
@@ -197,7 +200,7 @@ class TA(Player):
 	def __init__(self, name):
 		Player.__init__(self, name)
 
-	def attack(self, opponent):
+	def attack(self, opponent,damage):
 		Player.attack(self, opponent, Player.damage)
 		print("GUERILLA ATTACK!")
 
@@ -209,7 +212,9 @@ class Reader(Player):
 		Player.__init__(self, name)
 		self.damage = 0
 
-	def attack(self, opponent):
+
+
+	def attack(self, opponent, damage):
 		self.turn_damage = random.choice(self.damage)
 		Player.attack(self, opponent, self.turn_damage)
 		if self.turn_damage in range(50,60):
